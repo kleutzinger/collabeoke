@@ -1,6 +1,7 @@
 <script>
 	import Counter from './Counter.svelte';
 	import Lyricgetter from './Lyricgetter.svelte';
+	import Recorder from './Recorder.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
 </script>
@@ -26,7 +27,7 @@
 		try editing <strong>src/routes/+page.svelte</strong>
 	</h2>
 
-	<Counter />
+	<Recorder />
 	<Lyricgetter />
 </section>
 

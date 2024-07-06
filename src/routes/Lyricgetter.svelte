@@ -19,7 +19,6 @@
 	};
 
 	onMount(() => {
-		// getLyrics();
 	});
 </script>
 
