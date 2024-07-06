@@ -8,13 +8,18 @@
 	let song = '';
 
 	const getLyrics = async () => {
-		const res = await fetch(`https://api.lyrics.ovh/v1/${artist}/${song}`);
+		// add params
+		const encodedArtist = encodeURIComponent(artist);
+		const encodedSong = encodeURIComponent(song);
+		const res = await fetch(
+			`http://0.0.0.0:3000/lyrics?artist=${encodedArtist}&song=${encodedSong}`
+		);
 		const data = await res.json();
 		lyrics.set(data.lyrics);
 	};
 
 	onMount(() => {
-		getLyrics();
+		// getLyrics();
 	});
 </script>
 
@@ -32,7 +37,7 @@
 	<button type="submit">Get lyrics</button>
 </form>
 
-<pre>{JSON.stringify($lyrics, null, 2)}</pre>
+<textarea readonly>{$lyrics}</textarea>
 
 <style>
 	form {
@@ -54,5 +59,10 @@
 	button {
 		padding: 0.5rem;
 		font-size: 1rem;
+	}
+
+	textarea {
+		width: 100%;
+		height: 300px;
 	}
 </style>
