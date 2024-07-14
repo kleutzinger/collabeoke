@@ -15,10 +15,15 @@
 			`http://0.0.0.0:3000/lyrics?artist=${encodedArtist}&song=${encodedSong}`
 		);
 		const data = await res.json();
-		lyrics.set(data.lyrics);
+		// lyrics.set(JSON.dump(data[1]));
+		lyrics.set('Lyrics: \n' + JSON.stringify(data, null, 2));
 	};
 
-	onMount(() => {
+	onMount(async () => {
+		// get /snake-eater-lyrics endpoint
+		const res = await fetch('http://0.0.0.0:3000/snake-eater-lyrics');
+		const data = await res.json();
+		lyrics.set('Lyrics: \n' + JSON.stringify(data, null, 2));
 	});
 </script>
 
